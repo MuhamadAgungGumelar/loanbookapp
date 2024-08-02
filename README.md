@@ -149,3 +149,74 @@ Catatan: Gunakan Mock Data untuk menguji masing-masing dari Endpoint API yang di
 #### Menambahkan Pengembalian Buku oleh Member  
     POST /api/members/return
 
+## ALGORITMA TEST - Backend Developer - PT EIGEN TRI MATHEMA
+
+### 1. Terdapat string "NEGIE1", silahkan reverse alphabet nya dengan angka tetap diakhir kata Hasil = "EIGEN1"
+
+    function reverseAlphabet(str) {
+        const alphabets = str.match(/[A-Za-z]/g);
+        const numbers = str.match(/\d+/g);
+        
+        const reversedAlphabets = alphabets.reverse().join('');
+        
+        return reversedAlphabets + (numbers ? numbers.join('') : '');
+    }
+
+    const result1 = reverseAlphabet("NEGIE1");
+    console.log(result1);
+
+### 2. Diberikan contoh sebuah kalimat, silahkan cari kata terpanjang dari kalimat tersebut, jika ada kata dengan panjang yang sama silahkan ambil salah satu
+
+    function longestWord(sentence) {
+        const words = sentence.split(' ');
+        let longest = words[0];
+        
+        for (let word of words) {
+            if (word.length > longest.length) {
+                longest = word;
+            }
+        }
+        
+        return longest;
+    }
+
+    const sentence = "Saya sangat senang mengerjakan soal algoritma";
+    const longest = longestWord(sentence);
+    console.log(`${longest}: ${longest.length} character`);
+
+### 3. Terdapat dua buah array yaitu array INPUT dan array QUERY, silahkan tentukan berapa kali kata dalam QUERY terdapat pada array INPUT
+
+    function countOccurrences(input, query) {
+        const counts = query.map(q => input.filter(item => item === q).length);
+        return counts;
+    }
+
+    const INPUT = ['xc', 'dz', 'bbb', 'dz'];
+    const QUERY = ['bbb', 'ac', 'dz'];
+    const result3 = countOccurrences(INPUT, QUERY);
+    console.log(result3);
+
+### 4. Silahkan cari hasil dari pengurangan dari jumlah diagonal sebuah matrik NxN
+
+    function diagonalDifference(matrix) {
+        let primaryDiagonal = 0;
+        let secondaryDiagonal = 0;
+        
+        for (let i = 0; i < matrix.length; i++) {
+            primaryDiagonal += matrix[i][i]; 
+            secondaryDiagonal += matrix[i][matrix.length - 1 - i];
+        }
+        
+        return Math.abs(primaryDiagonal - secondaryDiagonal);
+    }
+
+    const matrix = [
+        [1, 2, 0],
+        [4, 5, 6],
+        [7, 8, 9]
+    ];
+
+    const result4 = diagonalDifference(matrix);
+    console.log(result4);
+
+
